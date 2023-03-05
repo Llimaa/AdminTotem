@@ -1,8 +1,8 @@
 namespace Application.UserUseCases;
 
-public class User 
+public class UserModel
 {
-    public User(string? name, string? email, string? document)
+    public UserModel(string? name, string? email, string? document)
     {
         Id = Guid.NewGuid();
         Name = name;

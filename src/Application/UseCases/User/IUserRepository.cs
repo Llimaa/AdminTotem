@@ -4,8 +4,8 @@ namespace Application.ServiceUseCase;
 
 public interface IUserRepository 
 {
-    Task<User> GetUserByDocumentAsync(string document);
-    Task AddUserAsync(User user);
-    Task ActiveUserAsync(Guid id);
-    Task InactiveUserAsync(Guid id);
+    Task<UserModel> GetUserByDocumentAsync(string document, CancellationToken cancellationToken);
+    Task AddUserAsync(UserModel user, CancellationToken cancellationToken);
+    Task ActiveUserAsync(Guid id, CancellationToken cancellationToken);
+    Task InactiveUserAsync(Guid id, CancellationToken cancellationToken);
 }

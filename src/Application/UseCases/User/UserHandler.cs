@@ -6,18 +6,28 @@ namespace Application.UserUseCases;
 
 public class UserHandler : IHandler<AddUserCommand>, IHandler<ActiveUserCommand>, IHandler<InactiveUserCommand>
 {
-    public Task Handler(AddUserCommand command)
+    private readonly IUserRepository userRepository;
+
+    public UserHandler(IUserRepository userRepository)
     {
-        throw new NotImplementedException();
+        this.userRepository = userRepository;
     }
 
-    public Task Handler(ActiveUserCommand command)
+    public async Task Handler(AddUserCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = new UserModel(command.Name, command.Email, command.Document);
+        await userRepository.AddUserAsync(user, cancellationToken);
     }
 
-    public Task Handler(InactiveUserCommand command)
+    public async Task Handler(ActiveUserCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var id = command.Id;
+        await userRepository.ActiveUserAsync(id, cancellationToken);
+    }
+
+    public async Task Handler(InactiveUserCommand command, CancellationToken cancellationToken)
+    {
+        var id = command.Id;
+        await userRepository.InactiveUserAsync(id, cancellationToken);
     }
 }
