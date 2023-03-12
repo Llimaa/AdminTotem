@@ -13,12 +13,12 @@ public class TotemHandlerTests
         AddTotemCommand command = new();
         var cancellationToken = new CancellationToken();
         var mock = new Mock<IHandler<AddTotemCommand>>();
-        mock.Setup(_ =>  _.Handler(command, cancellationToken)).Returns(Task.CompletedTask);
+        mock.Setup(_ =>  _.HandlerAsync(command, cancellationToken)).Returns(Task.CompletedTask);
     
         // When
-        mock.Object.Handler(command);
+        mock.Object.HandlerAsync(command);
     
         // Then
-        mock.Verify(_ => _.Handler(It.IsAny<AddTotemCommand>(), cancellationToken),Times.Once);
+        mock.Verify(_ => _.HandlerAsync(It.IsAny<AddTotemCommand>(), cancellationToken),Times.Once);
     }
 }

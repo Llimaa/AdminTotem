@@ -2,7 +2,7 @@ using Application.Share;
 
 namespace Application.AggregatesModel.ServiceAggregate;
 
-public record ActiveServiceTotemCommand: ICommand
+public record ActiveServiceCommand: ICommand
 {
     public Guid Id { get; set; }
 }

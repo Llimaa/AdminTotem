@@ -1,22 +1,22 @@
-using Infrastructure.Config;
 using Infrastructure.Conventions;
+using Infrastructure.ServiceContext;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-namespace Infrastructure.Context;
+namespace Infrastructure.ServiceContex;
 
-public class TotemDbContext: ITotemDbContext
+public class ServiceDbContext : IServiceDbContext
 {
-    private IMongoDatabase database { get; set; }
+    private IMongoDatabase database;
     public IMongoClient client { get; set; }
 
     [Obsolete]
-    public TotemDbContext(ITotemDbConfig config)
+    public ServiceDbContext(IServiceDbConfig config)
     {
-        SetUpConventions();
+        // SetUpConventions();
         client = new MongoClient(config.ConnectionString);
         database = client.GetDatabase(config.DatabaseName);
     }
@@ -38,7 +38,8 @@ public class TotemDbContext: ITotemDbContext
             new SnakeCaseNameConvention()
         };
 
-        ConventionRegistry.Register("Totem Database Conventions", pack, t => true);
+        ConventionRegistry.Register("Service Database Conventions", pack, t => true);
     }
+    
     public IMongoCollection<T> GetCollection<T>(string name) => database.GetCollection<T>(name);
 }

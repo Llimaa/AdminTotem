@@ -1,8 +1,8 @@
 namespace Application.AggregatesModel.TotemAggregate;
 
-public class Service
+public class ServiceTotem
 {
-    public Service(Guid id, string? name, string? description)
+    public ServiceTotem(Guid id, string? name, string? description)
     {
         Id = id;
         Name = name;

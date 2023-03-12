@@ -16,7 +16,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
 
         //When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
 
         //Then
         serviceTotem.Name.Should().Be(name);
@@ -31,7 +31,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
 
         //When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
 
         // Then
         serviceTotem.Description.Should().Be(description);
@@ -46,7 +46,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
     
         // Then
         serviceTotem.Active.Should().BeTrue();
@@ -61,7 +61,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
     
         // Then
         serviceTotem.Id.Should().NotBe(Guid.Empty);
@@ -76,7 +76,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
     
         // Then
         serviceTotem.UpdatedAt.Should().BeNull();
@@ -91,7 +91,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
         serviceTotem.Update(fake.Name.FirstName(), fake.Random.AlphaNumeric(20));
     
         // Then
@@ -109,7 +109,7 @@ public class ServiceTotemTests
         var newName = fake.Name.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
         serviceTotem.Update(newName, description);
     
         // Then
@@ -127,7 +127,7 @@ public class ServiceTotemTests
         var newDescription = fake.Name.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
         serviceTotem.Update(name, newDescription);
     
         // Then
@@ -143,7 +143,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
         serviceTotem.InactiveServiceTotem();
     
         // Then
@@ -159,7 +159,7 @@ public class ServiceTotemTests
         var description = fake.Random.AlphaNumeric(10);
     
         // When
-        var serviceTotem = new ServiceTotemModel(name, description);
+        var serviceTotem = new Service(name, description);
         serviceTotem.InactiveServiceTotem();
         serviceTotem.ActiveServiceTotem();
     

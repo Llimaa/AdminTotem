@@ -2,7 +2,7 @@ using Application.Share;
 
 namespace Application.AggregatesModel.TotemAggregate;
 
-public class AddTotemCommand: ICommand 
+public class RemoveTotemCommand: ICommand 
 {
-    public string? Name { get; set; }
+    public Guid Id { get; set; }
 } 

@@ -2,7 +2,7 @@ using Application.Share;
 
 namespace Application.AggregatesModel.TotemAggregate;
 
-public class TotemHandler : IHandler<AddTotemCommand>
+public class TotemHandler : IHandler<AddTotemCommand>, IHandler<RemoveTotemCommand>
 {
     private readonly ITotemRepository totemRepository;
 
@@ -11,10 +11,17 @@ public class TotemHandler : IHandler<AddTotemCommand>
         this.totemRepository = totemRepository;
     }
 
-    public async Task Handler(AddTotemCommand command, CancellationToken cancellationToken = default)
+    public async Task HandlerAsync(AddTotemCommand command, CancellationToken cancellationToken = default)
     {
-        var totem = new TotemModel(command.Name, command.AttendancePassword);
+        var totem = new Totem(command.Name);
 
         await totemRepository.AddTotemAsync(totem, cancellationToken);
+    }
+
+    public async Task HandlerAsync(RemoveTotemCommand command, CancellationToken cancellationToken = default)
+    {
+        var id = command.Id;
+
+        await totemRepository.RemoveTotemAsync(id, cancellationToken);
     }
 }
