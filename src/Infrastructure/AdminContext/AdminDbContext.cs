@@ -6,15 +6,15 @@ using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-namespace Infrastructure.ServiceContex;
+namespace Infrastructure.AdminContext;
 
-public class ServiceDbContext : IServiceDbContext
+public class AdminDbContext : IAdminDbContext
 {
     private IMongoDatabase database;
     public IMongoClient client { get; set; }
 
     [Obsolete]
-    public ServiceDbContext(IServiceDbConfig config)
+    public AdminDbContext(IAdminDbConfig config)
     {
         // SetUpConventions();
         client = new MongoClient(config.ConnectionString);

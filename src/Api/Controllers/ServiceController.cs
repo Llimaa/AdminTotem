@@ -47,7 +47,7 @@ public class ServiceController : ControllerBase
     /// <param name="command">Id at service</param>
     /// <response code="204">Totem activated with success.</response>
     [ProducesResponseType(204)]
-    [HttpPut("/active")]
+    [HttpPatch("/active")]
     public async Task<IActionResult> ActiveAsync (ActiveServiceCommand command, CancellationToken cancellationToken) 
     {
         await handler.HandlerAsync(command, cancellationToken);
@@ -60,7 +60,7 @@ public class ServiceController : ControllerBase
     /// <param name="command">Id at service</param>
     /// <response code="204">Totem inactivated with success.</response>
     [ProducesResponseType(204)]
-    [HttpPut("/inactive")]
+    [HttpPatch("/inactive")]
     public async Task<IActionResult> InactiveAsync (InactiveServiceCommand command, CancellationToken cancellationToken) 
     {
         await handler.HandlerAsync(command, cancellationToken);

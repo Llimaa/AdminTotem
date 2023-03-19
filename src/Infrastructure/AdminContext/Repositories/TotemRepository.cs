@@ -1,6 +1,6 @@
 using Application.AggregatesModel.TotemAggregate;
-using Infrastructure.Config;
-using Infrastructure.Context;
+using Infrastructure.AdminContext;
+using Infrastructure.ServiceContext;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -10,9 +10,9 @@ public class TotemRepository : ITotemRepository
 {
     private readonly IMongoCollection<Totem> collection;
 
-    public TotemRepository(ITotemDbContext totemDbContext, ITotemDbConfig totemDbConfig)
+    public TotemRepository(IAdminDbContext adminDbContext, IAdminDbConfig totemDbConfig)
     {
-        collection = totemDbContext.GetCollection<Totem>(totemDbConfig.TotemCollectionName);
+        collection = adminDbContext.GetCollection<Totem>(totemDbConfig.TotemCollectionName);
     }
 
     public async Task<IEnumerable<Totem>> GetAllAsync(CancellationToken cancellationToken)

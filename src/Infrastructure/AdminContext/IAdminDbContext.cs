@@ -1,8 +1,8 @@
 using MongoDB.Driver;
 
-namespace Infrastructure.ServiceContext;
+namespace Infrastructure.AdminContext;
 
-public interface IServiceDbContext 
+public interface IAdminDbContext 
 {
     IMongoCollection<T> GetCollection<T>(string name);
     IMongoClient client {get; set; }

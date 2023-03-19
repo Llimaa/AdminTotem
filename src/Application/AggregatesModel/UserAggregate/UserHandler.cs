@@ -14,7 +14,7 @@ public class UserHandler : IHandler<AddUserCommand>, IHandler<ActiveUserCommand>
 
     public async Task HandlerAsync(AddUserCommand command, CancellationToken cancellationToken)
     {
-        var user = new UserModel(command.Name, command.Email, command.Document);
+        var user = new User(command.Name, command.Email, command.Document);
         await userRepository.AddUserAsync(user, cancellationToken);
     }
 

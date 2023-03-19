@@ -2,6 +2,7 @@
 
 using Application.AggregatesModel.ServiceAggregate;
 using Application.AggregatesModel.TotemAggregate;
+using Application.AggregatesModel.UserAggregate;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +15,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<TotemHandler>();
 builder.Services.AddScoped<ServiceHandler>();
+builder.Services.AddScoped<UserHandler>();
 builder.Services.AddScoped<ITotemQueries, TotemQueries>();
-builder.Services.AddTotemDependencies(builder.Configuration);
-builder.Services.AddServiceDependencies(builder.Configuration);
+builder.Services.AddAdminDependencies(builder.Configuration);
 
 var app = builder.Build();
 

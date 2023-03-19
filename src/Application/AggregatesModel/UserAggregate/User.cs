@@ -1,8 +1,8 @@
 namespace Application.AggregatesModel.UserAggregate;
 
-public class UserModel
+public class User
 {
-    public UserModel(string? name, string? email, string? document)
+    public User(string? name, string? email, string? document)
     {
         Id = Guid.NewGuid();
         Name = name;

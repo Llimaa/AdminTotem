@@ -2,13 +2,13 @@ using Application.AggregatesModel.ServiceAggregate;
 using Infrastructure.ServiceContext;
 using MongoDB.Driver;
 
-namespace Infrastructure.ServiceContex.Repositories;
+namespace Infrastructure.AdminContext.Repositories;
 
 public class ServiceRepository : IServiceRepository
 {
     private readonly IMongoCollection<Service> collection;
 
-    public ServiceRepository(IServiceDbContext context, IServiceDbConfig config)
+    public ServiceRepository(IAdminDbContext context, IAdminDbConfig config)
     {
         collection = context.GetCollection<Service>(config.ServiceCollectionName);
     }
