@@ -1,6 +1,8 @@
 using Application.AggregatesModel.ServiceAggregate;
+using Application.AggregatesModel.ServiceDeskAggregate;
 using Infrastructure.AdminContext;
 using Infrastructure.AdminContext.Repositories;
+using Infrastructure.AdminDeskContext.Repository;
 using Infrastructure.ServiceContext;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -15,5 +17,6 @@ public static class AddAdminInfrastructure
         services.AddTransient<IAdminDbConfig, AdminDbConfig>(_ => _.GetRequiredService<IOptions<AdminDbConfig>>().Value);
         services.AddSingleton<IAdminDbContext, AdminDbContext>();
         services.AddScoped<IServiceRepository, ServiceRepository>();
+        services.AddScoped<IServiceDeskRepository, ServiceDeskRepository>();
     }
 }
