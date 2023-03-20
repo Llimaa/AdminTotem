@@ -3,7 +3,7 @@ using Application.Share;
 
 namespace Application.AggregatesModel.ServiceDeskAggregate;
 
-public record InactiveServiceDesk: ICommand 
+public record ActiveServiceDeskCommand: ICommand 
 {
     public Guid Id { get; set; }
 }

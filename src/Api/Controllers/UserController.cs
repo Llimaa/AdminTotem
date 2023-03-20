@@ -34,8 +34,8 @@ public class UserController : ControllerBase
     /// Responsible to Add new User
     /// </summary>
     /// <param name="command">Command with some information necessary to create a new User</param>
-    /// <response code="202">User added with success</response>
-    [ProducesResponseType(202)]
+    /// <response code="204">User added with success</response>
+    [ProducesResponseType(204)]
     [HttpPost()]
     public async Task<IActionResult> AddUserAsync (AddUserCommand command, CancellationToken cancellationToken) 
     {
@@ -47,9 +47,9 @@ public class UserController : ControllerBase
     /// Responsible to Active User
     /// </summary>
     /// <param name="command">Command with some information necessary to active User</param>
-    /// <response code="202">User activated successfully </response>
-    [ProducesResponseType(202)]
-    [HttpPatch("/active-user")]
+    /// <response code="204">User activated successfully </response>
+    [ProducesResponseType(204)]
+    [HttpPatch("/active-users")]
     public async Task<IActionResult> ActiveUserAsync (ActiveUserCommand command, CancellationToken cancellationToken) 
     {
         await handler.HandlerAsync(command, cancellationToken);
@@ -60,9 +60,9 @@ public class UserController : ControllerBase
     /// Responsible to Inactive User
     /// </summary>
     /// <param name="command">Command with some information necessary to Inactive User</param>
-    /// <response code="202">User activated successfully </response>
-    [ProducesResponseType(202)]
-    [HttpPatch("/inactive-user")]
+    /// <response code="204">User activated successfully </response>
+    [ProducesResponseType(204)]
+    [HttpPatch("/inactive-users")]
     public async Task<IActionResult> InActiveUserAsync (InactiveUserCommand command, CancellationToken cancellationToken) 
     {
         await handler.HandlerAsync(command, cancellationToken);

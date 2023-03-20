@@ -36,4 +36,10 @@ public class ServiceDeskRepository : IServiceDeskRepository
         var filter = Builders<ServiceDesk>.Filter.Eq(_ => _.Id, id);
         await collection.UpdateOneAsync(filter, Builders<ServiceDesk>.Update.Set(_ => _.Active, false));
     }
+
+    public async Task<IEnumerable<ServiceDesk>> GetAllServiceDeskAsync(CancellationToken cancellationToken = default)
+    {
+        var result = await collection.FindAsync(Builders<ServiceDesk>.Filter.Empty, new(), cancellationToken);
+        return result.ToList();
+    }
 }

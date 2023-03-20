@@ -1,6 +1,7 @@
 
 
 using Application.AggregatesModel.ServiceAggregate;
+using Application.AggregatesModel.ServiceDeskAggregate;
 using Application.AggregatesModel.TotemAggregate;
 using Application.AggregatesModel.UserAggregate;
 
@@ -16,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<TotemHandler>();
 builder.Services.AddScoped<ServiceHandler>();
 builder.Services.AddScoped<UserHandler>();
+builder.Services.AddScoped<ServiceDeskHandler>();
 builder.Services.AddScoped<ITotemQueries, TotemQueries>();
 builder.Services.AddAdminDependencies(builder.Configuration);
 

@@ -1,9 +1,13 @@
 using Application.AggregatesModel.ServiceAggregate;
 using Application.AggregatesModel.ServiceDeskAggregate;
+using Application.AggregatesModel.TotemAggregate;
+using Application.AggregatesModel.UserAggregate;
 using Infrastructure.AdminContext;
 using Infrastructure.AdminContext.Repositories;
 using Infrastructure.AdminDeskContext.Repository;
 using Infrastructure.ServiceContext;
+using Infrastructure.TotemContext.Repositories;
+using Infrastructure.UserContext.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
@@ -18,5 +22,7 @@ public static class AddAdminInfrastructure
         services.AddSingleton<IAdminDbContext, AdminDbContext>();
         services.AddScoped<IServiceRepository, ServiceRepository>();
         services.AddScoped<IServiceDeskRepository, ServiceDeskRepository>();
+        services.AddScoped<ITotemRepository, TotemRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 }
